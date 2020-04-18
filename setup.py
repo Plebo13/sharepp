@@ -8,7 +8,7 @@ setuptools.setup(
     version='0.1.7',
     author="Lukas Brauckmann",
     author_email="lukas.brauckmann@gmail.com",
-    description="SharePriceProvider is small script that provides share prices in EUR for a given ISIN.",
+    description="SharePriceProvider is a small script that provides share prices in EUR for a given ISIN.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Plebo13/sharepp",
