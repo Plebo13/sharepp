@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='sharepp',
-    version='0.1.1',
+    version='0.1.2',
     scripts=['sharepp.py'],
     author="Lukas Brauckmann",
     author_email="lukas.brauckmann@gmail.com",
