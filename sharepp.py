@@ -13,7 +13,7 @@ def parse_price(isin):
         price_span = parsed_html.find("ul", class_="KURSDATEN").find("span")
         price_string = price_span.text.replace(",", ".")
     except AttributeError:
-        # ETF
+        # ETF.
         price_span = parsed_html.find("span", class_="price")
         price_string = price_span.text.split(" ")[0].replace(",", ".")
 
