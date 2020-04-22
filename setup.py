@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='sharepp',
-    version='0.1.7',
+    version='0.1.9',
     author="Lukas Brauckmann",
     author_email="lukas.brauckmann@gmail.com",
     description="SharePriceProvider is a small script that provides share prices in EUR for a given ISIN.",
