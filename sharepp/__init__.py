@@ -6,7 +6,7 @@ onvista_url = "https://www.onvista.de/"
 
 
 def parse_price(isin):
-    response = requests.get(onvista_url+isin)
+    response = requests.get(onvista_url + isin)
     parsed_html = BeautifulSoup(response.text, "html.parser")
     try:
         # Single share.
@@ -14,15 +14,11 @@ def parse_price(isin):
         price_string = price_span.text
     except AttributeError:
         # ETF.
-        price_span = parsed_html.find("span", class_="price")
+        column_div = parsed_html.find("div", class_="col col--sm-4 col--md-4 col--lg-4 col--xl-4")
+        price_span = column_div.find("data", class_="text-nowrap")
         price_string = price_span.text.split(" ")[0]
 
     price_string = price_string.replace('.', '').replace(',', '.')
-    
-    try:
-        price_float = float(price_string)
-    except ValueError:
-        price_float = 0.0
 
     return float(price_string)
 
