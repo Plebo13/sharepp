@@ -1,5 +1,5 @@
 # SharePriceProvider
-![Tests](https://github.com/Plebo13/sharepp/actions/workflows/test.yaml/badge.svg)
+![Testing](https://github.com/Plebo13/sharepp/actions/workflows/test.yaml/badge.svg)
 ## Installation
 The best way to install SharePriceProvider is by using pip:
 `pip install sharepp`
