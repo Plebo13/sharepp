@@ -1,4 +1,4 @@
-import sys
+"""SharePriceProvider is a small application that provides the current price in EUR for a given ISIN."""
 import requests
 
 onvista_url = "https://www.onvista.de/"
@@ -11,10 +11,3 @@ def parse_price(isin):
         return float(price_string)
     else:
         raise ValueError("You must provide a string object representing a valid ISIN!")
-
-
-if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print("You must provide exactly one argument.")
-    else:
-        print(parse_price(sys.argv[1]))
