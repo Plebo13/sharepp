@@ -35,5 +35,5 @@ jobs:
           pytest --cov=sharepp --cov-report xml sharepp/test/
       - name: Publishing coverage data
         run: |
-          export CODACY_PROJECT_TOKEN=b16ba6ed38a044068bc0f933f403b0d3
+          export CODACY_PROJECT_TOKEN=${{ secrets.CODACY_PROJECT_API }}
           bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage.xml
