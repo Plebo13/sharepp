@@ -30,7 +30,7 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Test with pytest
         run: |
-          pytest --cov=sharepp --cov-report xml sharepp/test/
+          pytest --cov=sharepp --cov-report xml tests/
       - name: Publishing coverage data
         run: |
           export CODACY_PROJECT_TOKEN=${{ secrets.CODACY_PROJECT_API }}
