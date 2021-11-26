@@ -1,19 +1,16 @@
 import unittest
-import sharepp
+from sharepp import SharePP
 
 
 class TestSharePP(unittest.TestCase):
 
     def test_valid_input(self):
-        try:
-            price = sharepp.parse_price("IE00BHZPJ569")
-            self.assertTrue(float, type(price))
-        except Exception:
-            self.fail("Unexpected exception!")
+        price = SharePP.get_etf_price("IE00BHZPJ569")
+        self.assertTrue(float, type(price))
 
     def test_invalid_input(self):
         try:
-            sharepp.parse_price(0)
+            SharePP.get_etf_price("invalid_isin")
             self.fail("Expected exception not thrown!")
         except ValueError as e:
             self.assertEqual("You must provide a string object representing a valid ISIN!", str(e))
