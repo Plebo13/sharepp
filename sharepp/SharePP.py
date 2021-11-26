@@ -23,6 +23,11 @@ def get_etf_price(isin: str) -> float:
 
 
 def is_isin(isin: str) -> bool:
+    """
+    Checks whether a string is a valid ISIN or not.
+    :param isin: the string to be checked
+    :return: true if the given string is a valid ISIN, otherwise false
+    """
     if re.match("^[A-Za-z]{2}[A-Za-z0-9]{10}", isin):
         return True
     else:
