@@ -4,8 +4,7 @@ from bs4 import BeautifulSoup
 from sharepp.Coin import Coin
 
 LANG_UND_SCHWARZ_ETF_URL = "https://www.ls-tc.de/de/etf/"
-COIN_GECKO_URL = "https://api.coingecko.com/api/v3/simple/price?ids={" \
-                 "coin}&vs_currencies={currency} "
+COIN_GECKO_URL = "https://api.coingecko.com/api/v3/simple/price?ids={coin}&vs_currencies={currency}"
 EURO_CURRENCY = "eur"
 
 
