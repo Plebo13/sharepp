@@ -13,21 +13,21 @@ The best way to install SharePriceProvider is by using pip:
 To use SharePriceProvider simply import it into your python project. There are two main functions
 available:
 
-- get_etf_price: Returns the current price of an ETF
-- get_coin_price: Returns the current price of a cryptocurrency
+-   get_etf_price: Returns the current price of an ETF
+-   get_coin_price: Returns the current price of a cryptocurrency
 
 Supported coins:
 
-- Bitcoin
-- Ethereum
-- Binance Coin
-- Tether
-- Solana
-- Cardano
-- Ripple
-- USD Coin
-- Polkadot
-- Dogecoin
+-   Bitcoin
+-   Ethereum
+-   Binance Coin
+-   Tether
+-   Solana
+-   Cardano
+-   Ripple
+-   USD Coin
+-   Polkadot
+-   Dogecoin
 
 ### Example
 
