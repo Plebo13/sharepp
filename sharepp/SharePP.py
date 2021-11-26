@@ -11,8 +11,8 @@ EURO_CURRENCY = "eur"
 
 
 def get_etf_price(isin: str) -> float:
-    """
-    Gets the current price in euro of a given ETF.
+    """Gets the current price in euro of a given ETF.
+
     :param isin: the ISIN of the ETF
     :return: the current price
     """
@@ -27,8 +27,8 @@ def get_etf_price(isin: str) -> float:
 
 
 def get_coin_price(coin: Coin) -> float:
-    """
-    Gets the current price in euro of a given cryptocurrency.
+    """Gets the current price in euro of a given cryptocurrency.
+
     :param coin: the cryptocurrency
     :return: the current price of the cryptocurrency
     """
@@ -37,8 +37,8 @@ def get_coin_price(coin: Coin) -> float:
 
 
 def is_isin(isin: str) -> bool:
-    """
-    Checks whether a string is a valid ISIN or not.
+    """Checks whether a string is a valid ISIN or not.
+
     :param isin: the string to be checked
     :return: true if the given string is a valid ISIN, otherwise false
     """
