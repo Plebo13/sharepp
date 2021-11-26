@@ -8,15 +8,15 @@ setuptools.setup(
     version='1.0',
     author="Lukas Brauckmann",
     author_email="lukas.brauckmann@gmail.com",
-    description="SharePriceProvider is a small script that provides share prices in EUR for a given ISIN.",
+    description="Library for getting ETF and cryptocurrency prices.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Plebo13/sharepp",
     packages=setuptools.find_packages(where="sharepp"),
     classifiers=[
         "Programming Language :: Python :: 3",
-         "License :: OSI Approved :: Apache Software License",
-         "Operating System :: OS Independent",
+        "License :: OSI Approved :: Apache Software License",
+        "Operating System :: OS Independent",
     ],
     install_requires=[
         'requests',
