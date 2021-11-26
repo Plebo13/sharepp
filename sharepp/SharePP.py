@@ -3,12 +3,16 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
+from sharepp.Coin import Coin
+
 LANG_UND_SCHWARZ_ETF_URL = "https://www.ls-tc.de/de/etf/"
+COIN_GECKO_URL = "https://api.coingecko.com/api/v3/simple/price?ids={coin}&vs_currencies={currency}"
+EURO_CURRENCY = "eur"
 
 
 def get_etf_price(isin: str) -> float:
     """
-    Gets the current price of an ETF.
+    Gets the current price in euro of a given ETF.
     :param isin: the ISIN of the ETF
     :return: the current price
     """
@@ -20,6 +24,16 @@ def get_etf_price(isin: str) -> float:
         return float(price_string)
     else:
         raise ValueError("You must provide a string object representing a valid ISIN!")
+
+
+def get_coin_price(coin: Coin) -> float:
+    """
+    Gets the current price in euro of a given cryptocurrency.
+    :param coin: the cryptocurrency
+    :return: the current price of the cryptocurrency
+    """
+    response = requests.get(COIN_GECKO_URL.format(coin=coin.value, currency=EURO_CURRENCY)).json()
+    return float(response[coin.value][EURO_CURRENCY])
 
 
 def is_isin(isin: str) -> bool:
