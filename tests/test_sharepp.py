@@ -1,12 +1,11 @@
 import unittest
-from sharepp import SharePP
-from sharepp.Coin import Coin
+from sharepp import SharePP, Coin
 
 
 class SharePPTest(unittest.TestCase):
 
     def test_valid_input(self):
-        price = SharePP.get_etf_price("IE00BHZPJ569")
+        price = SharePP.get_etf_price("LU1781541179")
         self.assertTrue(float, type(price))
 
     def test_invalid_input(self):
