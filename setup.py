@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="sharepp",
-    version="1.0.1",
+    version="1.1",
     author="Lukas Brauckmann",
     author_email="lukas.brauckmann@gmail.com",
-    description="Library for getting ETF and cryptocurrency prices.",
+    description="Library for getting current prices of stocks, ETFs and cryptocurrency.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Plebo13/sharepp",
