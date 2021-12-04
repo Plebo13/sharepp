@@ -1,9 +1,12 @@
 import re
+
 import requests
 from bs4 import BeautifulSoup
+
 from sharepp.Coin import Coin
 
 LANG_UND_SCHWARZ_ETF_URL = "https://www.ls-tc.de/de/etf/"
+LANG_UND_SCHWARZ_STOCK_URL = "https://www.ls-tc.de/de/aktie/"
 COIN_GECKO_URL = "https://api.coingecko.com/api/v3/simple/price?ids={coin}&vs_currencies={currency}"
 EURO_CURRENCY = "eur"
 
@@ -15,8 +18,22 @@ def get_etf_price(isin: str) -> float:
     :param isin: the ISIN of the ETF
     :return: the current price
     """
+    return parse_price(isin, LANG_UND_SCHWARZ_ETF_URL)
+
+
+def get_stock_price(isin: str) -> float:
+    """
+    Gets the current price in euro of a given stock.
+
+    :param isin: the ISIN of the ETF
+    :return: the current price
+    """
+    return parse_price(isin, LANG_UND_SCHWARZ_STOCK_URL)
+
+
+def parse_price(isin: str, url: str) -> float:
     if is_isin(isin):
-        response = requests.get(LANG_UND_SCHWARZ_ETF_URL + isin)
+        response = requests.get(url + isin)
         parsed_html = BeautifulSoup(response.text, "html.parser")
         price_span = parsed_html.find("div", class_="mono").find("span")
         price_string = price_span.text.replace(".", "").replace(",", ".")
