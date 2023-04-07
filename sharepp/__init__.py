@@ -1,12 +1,9 @@
 """SharePriceProvider is a small application that provides the current price
 in EUR for a given ISIN. """
-from sharepp.coin import Coin
-
+from enum import Enum
 import re
 import requests
 from bs4 import BeautifulSoup
-
-from sharepp import Coin
 
 LANG_UND_SCHWARZ_ETF_URL = "https://www.ls-tc.de/de/etf/"
 COIN_GECKO_URL = (
@@ -15,7 +12,22 @@ COIN_GECKO_URL = (
 EURO_CURRENCY = "eur"
 
 
-def get_etf_price(isin: str) -> float:
+class Coin(Enum):
+    """Enum representing all currently supported cryptocurrencies."""
+
+    BITCOIN = "bitcoin"
+    ETHEREUM = "ethereum"
+    BINANCE_COIN = "binancecoin"
+    TETHER = "tether"
+    SOLANA = "solana"
+    CARDANO = "cardano"
+    RIPPLE = "ripple"
+    USD_COIN = "usd-coin"
+    POLKADOT = "polkadot"
+    DOGECOIN = "dogecoin"
+
+
+def get_etf_price(isin: str, rounded=False) -> float:
     """
     Gets the current price in euro of a given ETF.
 
@@ -27,6 +39,9 @@ def get_etf_price(isin: str) -> float:
         parsed_html = BeautifulSoup(response.text, "html.parser")
         price_span = parsed_html.find("div", class_="mono").find("span")
         price_string = price_span.text.replace(".", "").replace(",", ".")
+
+        if rounded:
+            return round(float(price_string), 2)
         return float(price_string)
     else:
         raise ValueError("You must provide a string object representing a valid ISIN!")

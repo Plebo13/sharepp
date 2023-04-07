@@ -1,6 +1,5 @@
 import unittest
 import sharepp
-from sharepp import Coin
 
 
 class SharePPTest(unittest.TestCase):
@@ -17,7 +16,7 @@ class SharePPTest(unittest.TestCase):
             )
 
     def test_get_coin_price(self):
-        for coin in Coin:
+        for coin in sharepp.Coin:
             price = sharepp.get_coin_price(coin)
             self.assertTrue(float, type(price))
 
