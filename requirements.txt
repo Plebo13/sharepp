@@ -7,7 +7,7 @@ distlib==0.3.3
 filelock==3.3.1
 idna==3.3
 pipenv==2022.1.8
-platformdirs==2.4.0
+platformdirs==3.2.0
 pycosat==0.6.3
 requests==2.26.0
 ruamel.yaml==0.17.16
