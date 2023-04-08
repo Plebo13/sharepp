@@ -12,6 +12,10 @@ COIN_GECKO_URL = (
 EURO_CURRENCY = "eur"
 
 
+class SharePPError(Exception):
+    pass
+
+
 class Coin(Enum):
     """Enum representing all currently supported cryptocurrencies."""
 
@@ -34,17 +38,22 @@ def get_etf_price(isin: str, rounded=False) -> float:
     :param isin: the ISIN of the ETF
     :return: the current price
     """
-    if is_isin(isin):
-        response = requests.get(LANG_UND_SCHWARZ_ETF_URL + isin)
-        parsed_html = BeautifulSoup(response.text, "html.parser")
-        price_span = parsed_html.find("div", class_="mono").find("span")
-        price_string = price_span.text.replace(".", "").replace(",", ".")
+    if not is_isin(isin):
+        raise SharePPError(
+            "You must provide a string object representing a valid ISIN!"
+        )
 
-        if rounded:
-            return round(float(price_string), 2)
-        return float(price_string)
-    else:
-        raise ValueError("You must provide a string object representing a valid ISIN!")
+    response = requests.get(LANG_UND_SCHWARZ_ETF_URL + isin)
+    if response.status_code != 200:
+        raise SharePPError(f"No price information for ISIN {isin} could be found!")
+
+    parsed_html = BeautifulSoup(response.text, "html.parser")
+    price_span = parsed_html.find("div", class_="mono").find("span")
+    price_string = price_span.text.replace(".", "").replace(",", ".")
+
+    if rounded:
+        return round(float(price_string), 2)
+    return float(price_string)
 
 
 def get_coin_price(coin: Coin) -> float:

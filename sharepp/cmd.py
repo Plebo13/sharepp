@@ -1,6 +1,6 @@
 import argparse
 
-from sharepp import get_etf_price
+from sharepp import SharePPError, get_etf_price
 
 
 def run():
@@ -20,4 +20,8 @@ def run():
     args = parser.parse_args()
 
     if args.command == "etf-price":
-        print(get_etf_price(args.isin, rounded=True))
+        try:
+            price = get_etf_price(args.isin)
+            print(f"{price:.2f}€")
+        except SharePPError as e:
+            print(e)
