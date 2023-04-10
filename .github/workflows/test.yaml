@@ -27,7 +27,7 @@ jobs:
         run: poetry run flake8 --config=.config/linter.toml
       - name: Test with pytest
         run: |
-          pytest --cov=sharepp --cov-report xml tests/
+          poetry run pytest --cov=sharepp --cov-report xml tests/
       - name: Publishing coverage data
         run: |
           export CODACY_PROJECT_TOKEN=${{ secrets.CODACY_PROJECT_API }}
