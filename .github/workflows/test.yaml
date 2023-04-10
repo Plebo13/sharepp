@@ -12,7 +12,6 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.8", "3.9", "3.10", "3.11"]
-        poetry-version: ["1.4.2"]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
@@ -25,12 +24,7 @@ jobs:
           python -m pip install poetry
           poetry install
       - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          black: true
-          black_args: --config=.config/linter.toml
-          flake8: true
-          flake8_args: --config=.config/linter.toml
+        run: poetry run flake8 --config=.config/linter.toml
       - name: Test with pytest
         run: |
           pytest --cov=sharepp --cov-report xml tests/
