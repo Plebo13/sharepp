@@ -6,7 +6,8 @@ from sharepp import SharePPError, get_etf_price
 def run():
     parser = argparse.ArgumentParser(
         prog="sharepp",
-        description="SharePriceProvider is a small application that provides the current price in EUR for a given ISIN.",
+        description="""SharePriceProvider is a small application
+         that provides the current price in EUR for a given ISIN.""",
     )
     subparsers = parser.add_subparsers(
         title="command", help="Command to execute", dest="command", required=True
