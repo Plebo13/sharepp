@@ -8,12 +8,12 @@ class SharePPTest(unittest.TestCase):
         self.assertTrue(float, type(price))
 
     def test_invalid_input(self):
-        with self.assertRaises(ValueError) as e:
+        with self.assertRaises(sharepp.SharePPError) as e:
             sharepp.get_etf_price("invalid_isin")
-            self.assertEqual(
-                "You must provide a string object representing a valid ISIN!",
-                str(e.exception),
-            )
+        self.assertEqual(
+            "You must provide a string object representing a valid ISIN!",
+            str(e.exception),
+        )
 
     def test_get_coin_price(self):
         for coin in sharepp.Coin:
