@@ -2,6 +2,7 @@
 name = "sharepp"
 version = "1.0.1"
 description = "Library for getting current prices of stocks, ETFs and cryptocurrency."
+repository = "https://github.com/Plebo13/sharepp"
 authors = ["Lukas Brauckmann <lukas.brauckmann@gmail.com>"]
 license = "Apache-2.0"
 readme = "README.md"
