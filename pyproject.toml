@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "sharepp"
+version = "1.0.1"
+description = "Library for getting current prices of stocks, ETFs and cryptocurrency."
+authors = ["Lukas Brauckmann <lukas.brauckmann@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+bs4 = "^0.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
