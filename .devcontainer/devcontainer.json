@@ -14,10 +14,14 @@
   },
   "customizations": {
     "vscode": {
+      "settings": {
+        "editor.formatOnSave": true
+      },
       "extensions": [
         "njpwerner.autodocstring",
         "aaron-bond.better-comments",
-        "tamasfe.even-better-toml"
+        "tamasfe.even-better-toml",
+        "esbenp.prettier-vscode"
       ]
     }
   }
