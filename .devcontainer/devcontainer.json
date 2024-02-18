@@ -4,24 +4,21 @@
   "features": {
     "ghcr.io/devcontainers-contrib/features/poetry:2": {
       "version": "latest"
-    },
-    "ghcr.io/devcontainers-contrib/features/black:2": {
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers-contrib/features/flake8:2": {
-      "version": "latest"
     }
   },
   "customizations": {
     "vscode": {
       "settings": {
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "flake8.args": ["--config=config/flake8"]
       },
       "extensions": [
         "njpwerner.autodocstring",
         "aaron-bond.better-comments",
         "tamasfe.even-better-toml",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "ms-python.black-formatter",
+        "ms-python.flake8"
       ]
     }
   }
