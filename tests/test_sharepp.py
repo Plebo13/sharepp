@@ -1,32 +1,33 @@
+from time import sleep
 import unittest
 
-from sharepp import SharePP, Coin
+import sharepp
 
 
 class SharePPTest(unittest.TestCase):
 
     def test_valid_stock_input(self):
-        price = SharePP.get_stock_price("US0378331005")
+        price = sharepp.get_stock_price("US0378331005")
         self.assertTrue(float, type(price))
 
     def test_valid_etf_input(self):
-        price = SharePP.get_etf_price("LU1781541179")
+        price = sharepp.get_etf_price("LU1781541179")
         self.assertTrue(float, type(price))
 
     def test_invalid_input(self):
         try:
-            SharePP.get_etf_price("invalid_isin")
+            sharepp.get_etf_price("invalid_isin")
             self.fail("Expected exception not thrown!")
         except ValueError as e:
             self.assertEqual(
-                "You must provide a string object representing a valid ISIN!",
-                str(e))
+                "You must provide a string object representing a valid ISIN!", str(e)
+            )
 
     def test_get_coin_price(self):
-        for coin in Coin:
-            price = SharePP.get_coin_price(coin)
-            self.assertTrue(float, type(price))
+        price = sharepp.get_coin_price(sharepp.Coin.BITCOIN)
+        self.assertTrue(float, type(price))
+        sleep(5)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

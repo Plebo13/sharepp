@@ -3,12 +3,15 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
-from sharepp.Coin import Coin
+from sharepp.coin import Coin
 
 LANG_UND_SCHWARZ_ETF_URL = "https://www.ls-tc.de/de/etf/"
 LANG_UND_SCHWARZ_STOCK_URL = "https://www.ls-tc.de/de/aktie/"
 COIN_GECKO_URL = "https://api.coingecko.com/api/v3/simple/price?ids={coin}&vs_currencies={currency}"
 EURO_CURRENCY = "eur"
+
+class SharePPError(Exception):
+    ...
 
 
 def get_etf_price(isin: str) -> float:
@@ -52,6 +55,8 @@ def get_coin_price(coin: Coin) -> float:
     """
     response = requests.get(
         COIN_GECKO_URL.format(coin=coin.value, currency=EURO_CURRENCY)).json()
+    if coin.value not in response:
+        raise SharePPError(f"Error getting price for {coin.name}: {response['status']['error_message']}")
     return float(response[coin.value][EURO_CURRENCY])
 
 
