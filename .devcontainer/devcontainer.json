@@ -1,0 +1,26 @@
+{
+    "name": "edgar",
+    "image": "mcr.microsoft.com/devcontainers/python:3.11",
+    "features": {
+      "ghcr.io/devcontainers-contrib/features/poetry:2": {
+        "version": "latest"
+      }
+    },
+    "customizations": {
+      "vscode": {
+        "settings": {
+            "flake8.args": ["--config=.config/linter.toml"],
+            "editor.formatOnSave": true,
+            "files.autoSave": "afterDelay"
+        },
+        "extensions": [
+          "njpwerner.autodocstring",
+          "aaron-bond.better-comments",
+          "tamasfe.even-better-toml",
+          "ms-python.black-formatter",
+          "ms-python.black-formatter",
+          "esbenp.prettier-vscode"
+        ]
+      }
+    }
+  }
