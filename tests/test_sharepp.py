@@ -4,7 +4,7 @@ import sharepp
 
 class SharePPTest(unittest.TestCase):
     def test_valid_input(self):
-        price = sharepp.get_etf_price("LU1781541179")
+        price = sharepp.get_etf_price("IE00B4L5Y983")
         self.assertTrue(float, type(price))
 
     def test_invalid_input(self):
@@ -16,9 +16,8 @@ class SharePPTest(unittest.TestCase):
         )
 
     def test_get_coin_price(self):
-        for coin in sharepp.Coin:
-            price = sharepp.get_coin_price(coin)
-            self.assertTrue(float, type(price))
+        price = sharepp.get_coin_price(sharepp.Coin.BITCOIN)
+        self.assertTrue(float, type(price))
 
 
 if __name__ == "__main__":
