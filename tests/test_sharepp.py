@@ -26,7 +26,6 @@ class SharePPTest(unittest.TestCase):
     def test_get_coin_price(self):
         price = sharepp.get_coin_price(sharepp.Coin.BITCOIN)
         self.assertTrue(float, type(price))
-        sleep(5)
 
 
 if __name__ == "__main__":
