@@ -29,7 +29,7 @@ jobs:
         run: |
           poetry run pytest --cov=sharepp --cov-report xml tests/
       - name: Publishing coverage data
-      if: github.actor != 'dependabot[bot]'
+        if: github.actor != 'dependabot[bot]'
         run: |
           export CODACY_PROJECT_TOKEN=${{ secrets.CODACY_PROJECT_API }}
           bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage.xml
