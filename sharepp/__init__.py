@@ -1,11 +1,13 @@
 """SharePriceProvider is a small application that provides the current price
 in EUR for a given ISIN. """
+
 from enum import Enum
 import re
 import requests
 from bs4 import BeautifulSoup
+from currency_converter import CurrencyConverter
 
-LANG_UND_SCHWARZ_ETF_URL = "https://www.ls-tc.de/de/etf/"
+EXTRA_ETF_URL = "https://extraetf.com/de/etf-profile/{isin}"
 COIN_GECKO_URL = (
     "https://api.coingecko.com/api/v3/simple/price?ids={coin}&vs_currencies={currency}"
 )
@@ -31,7 +33,7 @@ class Coin(Enum):
     DOGECOIN = "dogecoin"
 
 
-def get_etf_price(isin: str, rounded=False) -> float:
+def get_etf_price(isin: str, rounded: bool = False, currency: str = "EUR") -> float:
     """
     Gets the current price in euro of a given ETF.
 
@@ -43,17 +45,26 @@ def get_etf_price(isin: str, rounded=False) -> float:
             "You must provide a string object representing a valid ISIN!"
         )
 
-    response = requests.get(LANG_UND_SCHWARZ_ETF_URL + isin)
+    response = requests.get(EXTRA_ETF_URL.format(isin=isin))
     if response.status_code != 200:
-        raise SharePPError(f"No price information for ISIN {isin} could be found!")
+        raise SharePPError(
+            f"No price information for ISIN {isin} could be found!", response
+        )
 
     parsed_html = BeautifulSoup(response.text, "html.parser")
-    price_span = parsed_html.find("div", class_="mono").find("span")
-    price_string = price_span.text.replace(".", "").replace(",", ".")
+    price_span = parsed_html.find("div", class_="real-time-course-wrapper").find(
+        "span", class_="ng-star-inserted"
+    )
+    price_string = (
+        price_span.text.replace(".", "").replace(",", ".").replace("\xa0$", "")
+    )
+
+    currency_converter = CurrencyConverter()
+    price = currency_converter.convert(float(price_string), "USD", currency)
 
     if rounded:
-        return round(float(price_string), 2)
-    return float(price_string)
+        return round(price, 2)
+    return price
 
 
 def get_coin_price(coin: Coin) -> float:
