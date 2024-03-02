@@ -1,6 +1,6 @@
 # SharePriceProvider
 
-![Testing](https://github.com/Plebo13/sharepp/actions/workflows/test.yaml/badge.svg)
+![Testing](https://github.com/Plebo13/sharepp/actions/workflows/test.yml/badge.svg)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/fb03b5a446ae4a058e483c916e18d06c)](https://www.codacy.com/gh/Plebo13/sharepp/dashboard?utm_source=github.com&utm_medium=referral&utm_content=Plebo13/sharepp&utm_campaign=Badge_Grade)
 
 ## Installation
