@@ -10,6 +10,7 @@
       "vscode": {
         "settings": {
             "flake8.args": ["--config=.config/linter.toml"],
+            "black-formatter.args": ["--config=.config/linter.toml"],
             "editor.formatOnSave": true,
             "files.autoSave": "afterDelay"
         },
