@@ -55,9 +55,8 @@ def get_etf_price(isin: str, rounded: bool = False, currency: str = "EUR") -> fl
     price_span = parsed_html.find("div", class_="real-time-course-wrapper").find(
         "span", class_="ng-star-inserted"
     )
-    price_string = (
-        price_span.text.replace(".", "").replace(",", ".").replace("\xa0$", "")
-    )
+    price_string = price_span.text.replace(".", "").replace(",", ".")
+    price_string = re.search("^\d+\.\d{2}", price_string).group()
 
     currency_converter = CurrencyConverter()
     price = currency_converter.convert(float(price_string), "USD", currency)
