@@ -285,13 +285,13 @@ toml = ["tomli"]
 
 [[package]]
 name = "currencyconverter"
-version = "0.17.17"
+version = "0.17.19"
 description = "A currency converter using the European Central Bank data."
 optional = false
 python-versions = ">=3.6.1"
 files = [
-    {file = "CurrencyConverter-0.17.17-py3-none-any.whl", hash = "sha256:d75894ca5b8ec6c7d01cdbfc83f957a790698361938071fda82c0bfb530e8fc9"},
-    {file = "CurrencyConverter-0.17.17.tar.gz", hash = "sha256:f8bd29b1b11495bf5437357687b6bc519dfd87e3b0ee9d8b45da1f4d1f016199"},
+    {file = "CurrencyConverter-0.17.19-py3-none-any.whl", hash = "sha256:44d55cbbd54a221c224797d636a63d2685cbb4049867b25aa94f753b2ae757b8"},
+    {file = "CurrencyConverter-0.17.19.tar.gz", hash = "sha256:f3459ff574601b1858c2488a3fa33801718e5006b95f5c192ee0c3c0db77514d"},
 ]
 
 [[package]]
