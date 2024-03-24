@@ -56,7 +56,7 @@ def get_etf_price(isin: str, rounded: bool = False, currency: str = "EUR") -> fl
         "span", class_="ng-star-inserted"
     )
     price_string = price_span.text.replace(".", "").replace(",", ".")
-    price_string = re.search("^\d+\.\d{2}", price_string).group()
+    price_string = re.search(r"^\d+\.\d{2}", price_string).group()
 
     currency_converter = CurrencyConverter()
     price = currency_converter.convert(float(price_string), "USD", currency)
@@ -86,7 +86,7 @@ def is_isin(isin: str) -> bool:
     :param isin: the string to be checked
     :return: true if the given string is a valid ISIN, otherwise false
     """
-    if re.match("^[A-Za-z]{2}[A-Za-z0-9]{10}", isin):
+    if re.match(r"^[A-Za-z]{2}[A-Za-z0-9]{10}", isin):
         return True
     else:
         return False
